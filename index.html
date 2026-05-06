@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Introduction to Temporal</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="reveal.css" />
+    <link rel="stylesheet" href="dark.css" />
+    <!-- <link rel="stylesheet" href="simple.css" /> -->
+    <link rel="stylesheet" href="presentation.css" />
+    <script>
+      const EDITOR_THEME = "ace/theme/monokai";
+      //const EDITOR_THEME = "ace/theme/github";
+    </script>
+  </head>
+  <body>
+    <div class="progress hidden"></div>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section class="v-center h-center">
+            <h1 class="r-fit-text">Testing</h1>
+          </section>
+
+          <section>
+            <div class="example">
+              <h2>Test slide</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-2000"
+>
+
+Temporal.PlainDate.from("2026-03-17")
+.toLocaleString('no', { dateStyle: 'full'})
+
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-2000">tirsdag 17. mars 2026</blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start">
+            <h1>Test Slide</h1>
+            <p>Lorem ipsum</p>
+            <p>dolor sit amet</p>
+            <p>consectetur adipiscing elit</p>
+          </section>
+
+          <section class="v-center h-center">
+            <h1>Test Slide</h1>
+            <p>Lorem ipsum</p>
+            <p>dolor sit amet</p>
+            <p>consectetur adipiscing elit</p>
+          </section>
+
+          <section class="v-center h-center">
+            <p>...</p>
+          </section>
+
+          <section class="v-center h-center">
+            <h1 class="r-fit-text">Hei</h1>
+          </section>
+
+          <section class="v-center h-start">
+            <h2>I'm Szabolcs</h2>
+            <p>
+              Ustream / IBM <br />
+              IBM Cloud / BinX
+            </p>
+            <p>TC39 alumni</p>
+            <p>JSConf Budapest</p>
+            <p>CSSConf Budapest</p>
+
+            <div class="about-icons">
+              <span class="ustream"><img src="images/ustream.png" /></span>
+              <span class="ibm"><img src="images/IBM_logo.svg" /></span>
+              <span class="tc39"><img src="images/Logo_of_TC39.svg" /></span>
+              <span class="jsconfbp"
+                ><img src="images/JSConfBudapest_noborder.png"
+              /></span>
+            </div>
+          </section>
+
+          <section class="v-center h-center" data-chapter="1">
+            <h1>new Date()</h1>
+            <p>Do you like working with "Date"?</p>
+            <p class="fragment">What is wrong with JavaScript "Date"?</p>
+            <p class="fragment">
+              <a href="https://jsdate.wtf/" target="_blank">jsdate.wtf</a>
+            </p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="1">
+            <h2>Bad DX</h2>
+
+            <p>Ambiguous string parsing</p>
+            <p>Mutable instances</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="1">
+            <h2>Bad UX</h2>
+            <p>No concept of duration</p>
+            <p>Single calendar</p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="2">
+            <h1>1995</h1>
+            <p>Date was ported from Java Date</p>
+            <p class="fragment">Not changed since</p>
+            <p class="fragment">Pre ~2000's: <em>"... but Java!"</em></p>
+            <p class="fragment">
+              Post ~2010': <em>"Do not break the web!"</em>
+            </p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="2">
+            <h2>Age of libraries</h2>
+            <p>Example: <code>Moment.js</code></p>
+            <p>Huge install size</p>
+            <p>Maintenance overhead</p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="2">
+            <h1>2017</h1>
+            <p>
+              "Let's standardize this" <br />
+              <em>Maggie Johnson-Pint</em>
+            </p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="2">
+            <h2>9 years</h2>
+            <p>Microsoft, Bloomberg, Igalia, Google</p>
+            <p class="fragment">Biggest change in JS since ES2015 (aka ES6)</p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="2">
+            <h1 class="r-fit-text">Temporal</h1>
+          </section>
+
+          <section class="v-center h-start" data-chapter="2">
+            <h2>Temporal</h2>
+            <p>Top-level namespace object</p>
+            <p>Similar to <code>Intl</code> or <code>Math</code></p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="2">
+            <h2>The Temporal namespace</h2>
+            <p class="fragment">PlainDateTime</p>
+            <p class="fragment">ZonedDateTime</p>
+            <p class="fragment">Duration</p>
+            <p class="fragment">Instant</p>
+            <p class="fragment">Now</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="2">
+            <h2>The Temporal namespace</h2>
+
+            <p>Every instance of Temporal is immutable</p>
+            <p>Strongly typed</p>
+            <p><code>valueOf()</code> will throw!</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="2">
+            <h2>RFC 9557</h2>
+
+            <p>Extends ISO 8601 / RFC 3339</p>
+            <p>
+              <code class="fragment" data-fragment-index="1">YYYY-MM-DD</code>
+              <code class="fragment" data-fragment-index="2">T</code>
+              <code class="fragment" data-fragment-index="3"
+                >HH:mm:ss.sssssssss</code
+              >
+              <code class="fragment" data-fragment-index="4">Z/±HH:mm</code>
+              <code class="fragment" data-fragment-index="5"
+                >[u-ca=calendar_id]</code
+              >
+            </p>
+
+            <p>
+              <code class="fragment" data-fragment-index="1">2026-03-17</code
+              ><code class="fragment" data-fragment-index="2">T</code
+              ><code class="fragment" data-fragment-index="3"
+                >17:24:35.120490720</code
+              >
+              <code class="fragment" data-fragment-index="4">+01:00</code>
+              <code class="fragment" data-fragment-index="5"
+                >[u-ca=iso8601]</code
+              >
+            </p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="3">
+            <h2>Temporal.PlainDateTime</h2>
+            <p>Temporal.PlainDate & Temporal.PlainTime</p>
+            <p class="fragment">Date of a calendar</p>
+            <p class="fragment">Time as wall-clock time</p>
+            <p class="fragment">No timezone information</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="3">
+            <h2>Temporal.PlainDateTime</h2>
+            <p>Static methods</p>
+            <p><code>from()</code></p>
+            <p><code>compare()</code></p>
+            <p>
+              Always use <code>compare()</code> for PlainDateTime comparison!
+            </p>
+          </section>
+
+          <section data-chapter="3">
+            <div class="example">
+              <h2>Temporal.PlainDateTime</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-1"
+>
+Temporal.PlainDateTime.from("2026-03-17T19:45:00")
+//.year
+//.month
+//.weekOfYear
+//.daysInYear
+//.inLeapYear
+//.minute
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-1">2026-03-17T19:45:00</blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="3">
+            <h2>Operations in context of time</h2>
+            <p class="fragment">Equality check</p>
+            <p class="fragment">Round to a specific resolution</p>
+            <p class="fragment">Add & subtract durations</p>
+            <p class="fragment">
+              Calculate duration relative to a given PlainDateTime
+            </p>
+          </section>
+
+          <section data-chapter="3">
+            <div class="example">
+              <h2>.equals()</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-2"
+>
+Temporal.PlainDateTime.from("2026-03-17T00:00:00")
+  .equals(
+    Temporal.PlainDateTime.from(
+      {
+        year: 2026,
+        month: 3,
+        day: 17
+      })
+  )
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-2">true</blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="3">
+            <div class="example">
+              <h2>.round()</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-3"
+>
+Temporal.PlainDateTime.from("2026-03-17T19:16:40")
+.round('hour') 
+//.round({ smallestUnit: 'hour', roundingMode: 'floor' })
+.toString()
+
+// 'day', 'hour', 'minute', 'second'
+// also 'millisecond', 'microsecond', 'nanosecond'
+// no 'month', nor 'year'
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-3">2026-03-17T19:00:00</blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="3">
+            <div class="example">
+              <h2>.add() / .subtract()</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-4"
+>
+
+Temporal.PlainDateTime.from("2026-03-17T19:00:00")
+.add({ months: 2 })
+//.subtract({ months: 2 })
+.toString()
+
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-4">2026-05-17T19:00:00</blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="3">
+            <div class="example">
+              <h2>.since() / .until()</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-5"
+>
+Temporal.PlainDateTime
+  .from("2026-03-17T18:00:00")
+  .until("2026-03-17T19:30:00")
+  //.since("2026-01-01T00:00:00")
+  //.toString()
+  //.__proto__[Symbol.toStringTag]
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-5">object</blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="4">
+            <h2>Temporal.Duration</h2>
+
+            <p>Difference between two points in time</p>
+            <p class="fragment" data-fragment-index="1">
+              Not just simple milliseconds
+            </p>
+            <p class="fragment" data-fragment-index="2">
+              Serialized to the ISO 8601 duration format
+            </p>
+            <p>
+              <code class="fragment" data-fragment-index="3">± P</code>
+              <code class="fragment" data-fragment-index="4">nY</code>
+              <code class="fragment" data-fragment-index="5">nM</code>
+              <code class="fragment" data-fragment-index="6">nW</code>
+              <code class="fragment" data-fragment-index="7">nD</code>
+              <code class="fragment" data-fragment-index="8">T</code>
+              <code class="fragment" data-fragment-index="9">nH</code>
+              <code class="fragment" data-fragment-index="10">nM</code>
+              <code class="fragment" data-fragment-index="11">nS</code>
+            </p>
+            <p>
+              <code class="fragment" data-fragment-index="3">P</code
+              ><code class="fragment" data-fragment-index="7">1D</code
+              ><code class="fragment" data-fragment-index="8">T</code
+              ><code class="fragment" data-fragment-index="9">1H</code
+              ><code class="fragment" data-fragment-index="10">30M</code>
+            </p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="4">
+            <h2>Temporal.Duration</h2>
+
+            <p>Static methods</p>
+            <p><code>from()</code></p>
+            <p><code>compare()</code></p>
+            <p>Always use <code>compare()</code> for Duration comparison!</p>
+            <p>Remember: <code>valueOf()</code> will throw!</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="4">
+            <h2>Operations in context of duration</h2>
+
+            <p class="fragment">Add or subtract</p>
+            <p class="fragment">Round to a specific resolution</p>
+            <p class="fragment">Get the total value in a given unit</p>
+          </section>
+
+          <section data-chapter="4">
+            <div class="example">
+              <h2>.add() / .subtract()</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-6"
+>
+Temporal.Duration
+  .from("P1DT1H30M")
+  //.add("PT30M")
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-6">P1DT1H30M</blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="4">
+            <div class="example">
+              <h2>Round to a specific resolution</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-7"
+>
+Temporal.Duration
+  .from("P1DT1H30M")
+  .round('hours')
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-7">P1DT1H30M</blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="4">
+            <div class="example">
+              <h2>Get the total value in a given unit</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-8"
+>
+Temporal.Duration
+  .from("P1DT1H30M")
+  //.total('hours') // always returns a number
+  // calendar units throw without a relative point
+  //.total('months')
+  //.total({ unit: 'months', relativeTo: "2026-03-17" })
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-8">P1DT1H30M</blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="5">
+            <h2>Temporal.Instant</h2>
+
+            <p>Semantically same as Date</p>
+            <p class="fragment">
+              Nanoseconds since the Unix epoch (1979-01-01T00:00:00)
+              <br />
+              <code>1 / 1 000 000 000 sec</code>
+            </p>
+            <p class="fragment">
+              Date handles only milliseconds!
+              <br />
+              <code>1 / 1 000 sec</code>
+            </p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="5">
+            <h2>Temporal.Instant</h2>
+
+            <p>Static methods</p>
+            <p><code>from()</code></p>
+            <p><code>compare()</code></p>
+            <p class="fragment"><code>fromEpochMilliseconds()</code></p>
+            <p class="fragment"><code>fromEpochNanoseconds()</code></p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="5">
+            <h2>Operations with Temporal.Instant</h2>
+
+            <p>Same operations as PlainDateTime</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="6">
+            <h2>Temporal.ZonedDateTime</h2>
+
+            <p>PlainDateTime with Timezone and Calendar</p>
+          </section>
+
+          <section data-chapter="6">
+            <div class="example">
+              <h2>Temporal.ZonedDateTime</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-10"
+>
+Temporal.ZonedDateTime
+  .from("2026-03-17T18:30:00[Europe/Oslo]")
+  /*.from({
+    timeZone: "UTC",
+    year: 2021, month: 7, day: 1,
+    hour: 12, minute: 34, second: 56,
+  })*/  
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-10">
+                2026-03-17T18:30:00+01:00[Europe/Oslo]
+              </blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="6">
+            <div class="example">
+              <h2>Timezone options</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-11"
+>
+Temporal.ZonedDateTime
+  .from("2026-03-29T01:05:00[Europe/Oslo]", {
+    disambiguation: 'compatible',
+    //disambiguation: 'earlier',
+  }) 
+ 
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-11">
+                2026-03-29T01:05:00+01:00[Europe/Oslo]
+              </blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="6">
+            <h2>Operations in context of time zones</h2>
+
+            <p>Convert to wall-clock time (remove time zone information)</p>
+            <p>Get start time of day</p>
+            <p>Step between adjacent time zones</p>
+            <p>Convert to different time zone</p>
+          </section>
+
+          <section data-chapter="6">
+            <div class="example">
+              <h2>Calendars</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-21"
+>
+Temporal.ZonedDateTime
+  .from("2026-03-29T01:05:00[Europe/Oslo]")
+  //.withCalendar("islamicc")
+  .toString()
+  //.toLocaleString('en', { calendar: 'islamicc'})
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-21">
+                2026-03-29T01:05:00+01:00[Europe/Oslo]
+              </blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="7">
+            <h2>Temporal.Now</h2>
+
+            <p>Create Temporal instances of the current time</p>
+          </section>
+
+          <section data-chapter="7">
+            <div class="example">
+              <h2>Temporal.Now</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-12"
+>
+Temporal.Now
+  //.instant()
+  //.plainDateTimeISO()
+  //.zonedDateTimeISO()
+.toString()
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-12"></blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="8">
+            <h2>Output formatting</h2>
+
+            <p>Rely on the ECMAScript Internationalization API</p>
+            <p><code>Intl.DateTimeFormat</code>, and</p>
+            <p><code> Intl.DurationFormat</code></p>
+          </section>
+
+          <section data-chapter="8">
+            <div class="example">
+              <h2>Format PlainDateTime</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-13"
+>
+Temporal.Now.plainDateTimeISO()
+  .toString() 
+  //.toLocaleString() 
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-13"></blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="8">
+            <div class="example">
+              <h2>Format PlainDateTime segments only</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-14"
+>
+Temporal.Now.plainDateTimeISO()
+  .toLocaleString('no', {
+    month: 'long',
+    //weekday: 'long',
+    //dayPeriod: 'long'
+  }) 
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-14"></blockquote>
+            </div>
+          </section>
+
+          <section data-chapter="8">
+            <div class="example">
+              <h2>Format Durations</h2>
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-15"
+>
+Temporal.Duration.from('P2WT1H30M')
+  .toLocaleString('no', {
+   style: 'narrow',
+   // weeks: 'long'
+  }) 
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-15">2u, 1t, 30m</blockquote>
+            </div>
+          </section>
+
+          <section class="v-center h-start" data-chapter="9">
+            <h2>Date() compatibility</h2>
+
+            <p><code>Date.prototype.toTemporalInstant()</code></p>
+            <p>Returns a new <code>Temporal.Instant</code> instance</p>
+            <p>No Temporal to Date helpers</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="10">
+            <h2>TypeScript</h2>
+
+            <p>Type support was merged in early February 2026</p>
+            <p>Temporal APIs are available in the 6.0 beta</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="11">
+            <h2>Client support</h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <td>Desktop</td>
+                  <td>Mobile</td>
+                  <td>Server</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="images/Google_Chrome_icon_(February_2022).svg" />
+                  </td>
+                  <td>
+                    <img src="images/Google_Chrome_icon_(February_2022).svg" />
+                  </td>
+                  <td rowspan="3">
+                    <img
+                      src="images/nodejs-icon-svgrepo-com.svg"
+                      class="unavailable"
+                    />
+                    <p><small>Node 26 ?</small></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="images/500px-Firefox_logo,_2019.svg.png" />
+                  </td>
+                  <td>
+                    <img src="images/500px-Firefox_logo,_2019.svg.png" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img
+                      src="images/Safari_browser_logo.svg"
+                      class="unavailable"
+                    />
+                  </td>
+                  <td>
+                    <img
+                      src="images/Safari_browser_logo.svg"
+                      class="unavailable"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Recap & closing</h2>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Temporal.Now</h2>
+
+            <p>Use the static methods to get datetime instances</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Durations</h2>
+
+            <p>Calculate with proper, readable durations</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Date, Time and Duration Formatting</h2>
+
+            <p>Check out the <code>Intl</code> namespace!</p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Implementation</h2>
+            <p><code>temporal_rs</code> in Rust (used in V8)</p>
+            <p>
+              Students of the Bergen University helped drive the major
+              conformance push
+            </p>
+          </section>
+
+          <section class="v-center h-start" data-chapter="12">
+            <h2>Next steps</h2>
+            <p>Integration with the HTML Datepicker element</p>
+            <p>
+              Use Temporal.Instant nanoseconds with high resolution timestamps
+            </p>
+            <p>Try it, use it, enjoy!</p>
+          </section>
+
+          <section class="v-center h-center" data-chapter="12">
+            <h2>Thank you!</h2>
+            <div class="logo"></div>
+            <p>nec.is</p>
+            <p><small>https / bluesky</small></p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      window.onEditorChange = (code, output) => {
+        try {
+          let res = eval(code);
+
+          if (
+            typeof res === "undefined" ||
+            typeof res === "object" ||
+            typeof res === "function"
+          ) {
+            res = typeof res;
+          }
+
+          console.log(`Write output "${res}" to ${output}`);
+
+          document.getElementById(output).innerText = `${res}`;
+        } catch (e) {
+          console.error(e);
+        }
+      };
+
+      Reveal.initialize({
+        hash: true,
+        progress: false,
+        disableLayout: true,
+        overview: false,
+        controls: false,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        ace: {
+          oninit: function (editor) {
+            editor.setShowPrintMargin(false);
+            editor.setTheme(EDITOR_THEME);
+            editor.setOptions({
+              fontSize: "42px",
+              tabSize: 2,
+              useSoftTabs: true,
+            });
+            editor.session.setMode("ace/mode/typescript");
+
+            editor.on("focus", function (...props) {
+              console.log("Editor gained focus.", props);
+              Array.from(document.querySelectorAll("iframe.editable")).forEach(
+                (el) => (el.className += " focused"),
+              );
+            });
+
+            editor.on("blur", function () {
+              console.log("Editor lost focus.");
+              Array.from(document.querySelectorAll("iframe.editable")).forEach(
+                (el) => (el.className = el.className.replace("focused", "")),
+              );
+            });
+            Array.from(document.querySelectorAll("iframe.editable")).map(
+              (el) => {
+                el.setAttribute(
+                  "data-onchange",
+                  `onEditorChange(editor.getValue(), "${el.getAttribute("data-output")}")`,
+                );
+                el.style.fontSize = "48px";
+              },
+            );
+            editor.resize();
+          },
+        },
+        dependencies: [{ src: "plugin/ace/ace.js" }],
+      });
+
+      const chapters = new Set();
+
+      Array.from(document.querySelectorAll("[data-chapter]")).forEach(
+        (el, i) => {
+          const chapter = el.getAttribute("data-chapter");
+
+          if (!chapters.has(chapter)) {
+            chapters.add(chapter);
+            const dot = document.createElement("span");
+            //	dot.innerText = i + 1;
+            document.querySelector(".progress").appendChild(dot);
+          }
+        },
+      );
+
+      let currentChapter = 0;
+
+      Reveal.on("slidechanged", (event) => {
+        const chapter = parseInt(
+          event.currentSlide.getAttribute("data-chapter"),
+          10,
+        );
+
+        if (chapter) {
+          document.querySelector(".progress").className = document
+            .querySelector(".progress")
+            .className.replaceAll("hidden", "");
+        }
+        if (!chapter) {
+          document.querySelector(".progress").className += " hidden";
+        }
+
+        if (currentChapter !== chapter) {
+          Array.from(document.querySelectorAll(".progress span")).forEach(
+            (el, i) => {
+              if (i < chapter - 1) {
+                el.className = el.className.replaceAll("active", "");
+                if (!el.className.includes("visited")) {
+                  el.className += " visited";
+                }
+              }
+              if (i === chapter - 1) {
+                el.className += " active";
+              }
+
+              if (i > chapter - 1) {
+                el.className = el.className.replaceAll("active", "");
+                el.className = el.className.replaceAll("visited", "");
+              }
+            },
+          );
+        }
+
+        currentChapter = chapter;
+      });
+    </script>
+  </body>
+</html>
