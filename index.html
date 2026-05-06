@@ -11,12 +11,12 @@
 
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="reveal.css" />
-    <link rel="stylesheet" href="dark.css" />
-    <!-- <link rel="stylesheet" href="simple.css" /> -->
+    <!--     <link rel="stylesheet" href="dark.css" /> -->
+    <link rel="stylesheet" href="simple.css" />
     <link rel="stylesheet" href="presentation.css" />
     <script>
-      const EDITOR_THEME = "ace/theme/monokai";
-      //const EDITOR_THEME = "ace/theme/github";
+      //const EDITOR_THEME = "ace/theme/monokai";
+      const EDITOR_THEME = "ace/theme/github";
     </script>
   </head>
   <body>
@@ -24,48 +24,6 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <section class="v-center h-center">
-            <h1 class="r-fit-text">Testing</h1>
-          </section>
-
-          <section>
-            <div class="example">
-              <h2>Test slide</h2>
-              <!-- prettier-ignore -->
-              <iframe
-class="ace editable"
-id="editor-foo"
-data-output="result-2000"
->
-
-Temporal.PlainDate.from("2026-03-17")
-.toLocaleString('no', { dateStyle: 'full'})
-
-</iframe>
-              <!-- prettier-ignore-end -->
-
-              <blockquote id="result-2000">tirsdag 17. mars 2026</blockquote>
-            </div>
-          </section>
-
-          <section class="v-center h-start">
-            <h1>Test Slide</h1>
-            <p>Lorem ipsum</p>
-            <p>dolor sit amet</p>
-            <p>consectetur adipiscing elit</p>
-          </section>
-
-          <section class="v-center h-center">
-            <h1>Test Slide</h1>
-            <p>Lorem ipsum</p>
-            <p>dolor sit amet</p>
-            <p>consectetur adipiscing elit</p>
-          </section>
-
-          <section class="v-center h-center">
-            <p>...</p>
-          </section>
-
           <section class="v-center h-center">
             <h1 class="r-fit-text">Hei</h1>
           </section>
@@ -551,6 +509,30 @@ Temporal.ZonedDateTime
             <p>Get start time of day</p>
             <p>Step between adjacent time zones</p>
             <p>Convert to different time zone</p>
+          </section>
+
+          <section data-chapter="6">
+            <div class="example">
+              <h2>Flight duration</h2>
+
+              <!-- prettier-ignore -->
+              <iframe
+class="ace editable"
+id="editor-foo"
+data-output="result-112"
+>
+// take off in Oslo, land in Los Angeles
+Temporal.ZonedDateTime
+  .from("2026-05-04T06:05:00[Europe/Oslo]")
+.until(Temporal.ZonedDateTime
+  .from("2026-05-04T07:05:00[America/Los_Angeles]"))
+.toString()
+
+</iframe>
+              <!-- prettier-ignore-end -->
+
+              <blockquote id="result-112">PT10H</blockquote>
+            </div>
           </section>
 
           <section data-chapter="6">
